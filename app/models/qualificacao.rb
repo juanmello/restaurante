@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Qualificacao < ActiveRecord::Base
 
 	validates_presence_of :nota, :message => " - deve ser preenchido"

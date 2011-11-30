@@ -1,4 +1,8 @@
 VotaPrato::Application.routes.draw do
+  resources :qualificacoes
+
+  resources :clientes
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -14,6 +18,11 @@ VotaPrato::Application.routes.draw do
   #   resources :products
 
   # Sample resource route with options:
+  resources :restaurantes do
+    resources :qualificacoes
+  end
+
+
   #   resources :products do
   #     member do
   #       get 'short'
@@ -55,4 +64,7 @@ VotaPrato::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   match ':controller(/:action(/:id(.:format)))'
+  match 'rack',
+    :to => proc{|env| [200, {"Content-Type" => "text/html"}, ["App Rack numa rota Rails"]]}
+
 end
